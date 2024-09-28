@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario de Citas</title>
+
+    <!-- FullCalendar CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Calendario de Citas</h1>
+        <div id="calendar"></div>
+    </div>
+
+    <!-- Modal para agendar citas -->
+    <div class="modal fade" id="citaModal" tabindex="-1" aria-labelledby="citaModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="POST" id="citaForm">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="citaModalLabel">Agendar Cita</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="paciente" class="form-label">Paciente</label>
+                            <select class="form-select" id="paciente" name="paciente" required>
+                                <!-- Opciones cargadas dinámicamente desde la base de datos -->
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="odontologo" class="form-label">Odontólogo</label>
+                            <select class="form-select" id="odontologo" name="odontologo" required>
+                                <!-- Opciones cargadas dinámicamente -->
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fechaHora" class="form-label">Fecha y Hora</label>
+                            <input type="text" class="form-control" id="fechaHora" name="fechaHora" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="motivo" class="form-label">Motivo</label>
+                            <textarea class="form-control" id="motivo" name="motivo" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Agendar Cita</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FullCalendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            
+            // Inicialización de FullCalendar
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'timeGridWeek',  // Muestra las horas de cada día
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: '/get_citas',  // Cargar citas desde el backend
+                dateClick: function(info) {
+                    // Abrir modal al hacer clic en una fecha
+                    document.getElementById('fechaHora').value = info.dateStr;  // Asignar la fecha clickeada al campo
+                    var citaModal = new bootstrap.Modal(document.getElementById('citaModal'));
+                    citaModal.show();
+                },
+                editable: false,  // No permite mover las citas con el mouse
+                eventClick: function(info) {
+                    // Al hacer clic en una cita, puedes mostrar más detalles o abrir un modal para editarla
+                    alert('Cita con ' + info.event.title);
+                }
+            });
+
+            calendar.render();
+
+            // Manejo del envío del formulario para agendar cita
+            document.getElementById('citaForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                // Aquí puedes hacer una solicitud AJAX o redirigir a otra página para procesar el agendamiento de la cita
+                var data = new FormData(this);
+                fetch('/agendar_cita', {
+                    method: 'POST',
+                    body: data
+                }).then(response => {
+                    if (response.ok) {
+                        alert('Cita agendada con éxito');
+                        location.reload();  // Recargar la página para ver la nueva cita en el calendario
+                    } else {
+                        alert('Error al agendar la cita');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

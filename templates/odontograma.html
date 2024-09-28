@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odontograma</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .tooth {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            display: grid;
+            grid-template-areas:
+                "top top top"
+                "left center right"
+                "bottom bottom bottom";
+            grid-gap: 1px;
+        }
+
+        .tooth div {
+            background-color: #e0e0e0;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .top { grid-area: top; height: 10px; }
+        .bottom { grid-area: bottom; height: 10px; }
+        .left { grid-area: left; width: 10px; }
+        .right { grid-area: right; width: 10px; }
+        .center { grid-area: center; height: 30px; }
+
+  /* Colores según los problemas */
+  .caries {
+    background-color: red !important; /* Forzar el color */
+}
+.empaste {
+    background-color: yellow !important;
+}
+.extraido {
+    background-color: gray !important;
+}
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Odontograma del Paciente</h1>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Maxilar Superior</h2>
+                <div class="d-flex justify-content-center">
+             <!-- Dientes del maxilar superior (izquierda) -->
+             <div class="tooth" data-tooth="18">
+                <div class="number">18</div>
+                <div class="top" data-lado="superior"></div>
+                <div class="left" data-lado="izquierdo"></div>
+                <div class="center" data-lado="central"></div>
+                <div class="right" data-lado="derecho"></div>
+                <div class="bottom" data-lado="inferior"></div>
+            </div>
+            <div class="tooth" data-tooth="17">
+                <div class="number">17</div>
+                <div class="top" data-lado="superior"></div>
+                <div class="left" data-lado="izquierdo"></div>
+                <div class="center" data-lado="central"></div>
+                <div class="right" data-lado="derecho"></div>
+                <div class="bottom" data-lado="inferior"></div>
+            </div>
+            <!-- Más dientes del maxilar superior hasta el diente 11 -->
+            <div class="tooth" data-tooth="16">
+                <div class="number">16</div>
+                <div class="top" data-lado="superior"></div>
+                <div class="left" data-lado="izquierdo"></div>
+                <div class="center" data-lado="central"></div>
+                <div class="right" data-lado="derecho"></div>
+                <div class="bottom" data-lado="inferior"></div>
+            </div>
+            <div class="tooth" data-tooth="15">
+                <div class="number">15</div>
+                <div class="top" data-lado="superior"></div>
+                <div class="left" data-lado="izquierdo"></div>
+                <div class="center" data-lado="central"></div>
+                <div class="right" data-lado="derecho"></div>
+                <div class="bottom" data-lado="inferior"></div>
+            </div>
+            <div class="tooth" data-tooth="14">
+                <div class="number">14</div>
+                <div class="top" data-lado="superior"></div>
+                <div class="left" data-lado="izquierdo"></div>
+                <div class="center" data-lado="central"></div>
+                <div class="right" data-lado="derecho"></div>
+                <div class="bottom" data-lado="inferior"></div>
+            </div>
+            <div class="tooth" data-tooth="13">
+                <div class="number">13</div>
+                <div class="top" data-lado="superior"></div>
+                <div class="left" data-lado="izquierdo"></div>
+                <div class="center" data-lado="central"></div>
+                <div class="right" data-lado="derecho"></div>
+                <div class="bottom" data-lado="inferior"></div>
+            </div>
+            <div class="tooth" data-tooth="12">
+                <div class="number">12</div>
+                <div class="top" data-lado="superior"></div>
+                <div class="left" data-lado="izquierdo"></div>
+                <div class="center" data-lado="central"></div>
+                <div class="right" data-lado="derecho"></div>
+                <div class="bottom" data-lado="inferior"></div>
+            </div>
+            <div class="tooth" data-tooth="11">
+                <div class="number">11</div>
+                <div class="top" data-lado="superior"></div>
+                <div class="left" data-lado="izquierdo"></div>
+                <div class="center" data-lado="central"></div>
+                <div class="right" data-lado="derecho"></div>
+                <div class="bottom" data-lado="inferior"></div>
+            </div>
+        </div>
+    </div>
+
+            <div class="col-md-12 text-center mt-5">
+                <h2>Mandíbula Inferior</h2>
+                <div class="d-flex justify-content-center">
+                    <!-- Dientes de la mandíbula inferior (derecha) -->
+                    <div class="tooth" data-tooth="48">
+                        <div class="number">48</div>
+                        <div class="top" data-lado="superior"></div>
+                        <div class="left" data-lado="izquierdo"></div>
+                        <div class="center" data-lado="central"></div>
+                        <div class="right" data-lado="derecho"></div>
+                        <div class="bottom" data-lado="inferior"></div>
+                    </div>
+                    <div class="tooth" data-tooth="47">
+                        <div class="number">47</div>
+                        <div class="top" data-lado="superior"></div>
+                        <div class="left" data-lado="izquierdo"></div>
+                        <div class="center" data-lado="central"></div>
+                        <div class="right" data-lado="derecho"></div>
+                        <div class="bottom" data-lado="inferior"></div>
+                    </div>
+                    <!-- Más dientes hasta el diente 41 -->
+                    <div class="tooth" data-tooth="46">
+                        <div class="number">46</div>
+                        <div class="top" data-lado="superior"></div>
+                        <div class="left" data-lado="izquierdo"></div>
+                        <div class="center" data-lado="central"></div>
+                        <div class="right" data-lado="derecho"></div>
+                        <div class="bottom" data-lado="inferior"></div>
+                    </div>
+                    <div class="tooth" data-tooth="45">
+                        <div class="number">45</div>
+                        <div class="top" data-lado="superior"></div>
+                        <div class="left" data-lado="izquierdo"></div>
+                        <div class="center" data-lado="central"></div>
+                        <div class="right" data-lado="derecho"></div>
+                        <div class="bottom" data-lado="inferior"></div>
+                    </div>
+                    <div class="tooth" data-tooth="44">
+                        <div class="number">44</div>
+                        <div class="top" data-lado="superior"></div>
+                        <div class="left" data-lado="izquierdo"></div>
+                        <div class="center" data-lado="central"></div>
+                        <div class="right" data-lado="derecho"></div>
+                        <div class="bottom" data-lado="inferior"></div>
+                    </div>
+                    <div class="tooth" data-tooth="43">
+                        <div class="number">43</div>
+                        <div class="top" data-lado="superior"></div>
+                        <div class="left" data-lado="izquierdo"></div>
+                        <div class="center" data-lado="central"></div>
+                        <div class="right" data-lado="derecho"></div>
+                        <div class="bottom" data-lado="inferior"></div>
+                    </div>
+                    <div class="tooth" data-tooth="42">
+                        <div class="number">42</div>
+                        <div class="top" data-lado="superior"></div>
+                        <div class="left" data-lado="izquierdo"></div>
+                        <div class="center" data-lado="central"></div>
+                        <div class="right" data-lado="derecho"></div>
+                        <div class="bottom" data-lado="inferior"></div>
+                    </div>
+                    <div class="tooth" data-tooth="41">
+                        <div class="number">41</div>
+                        <div class="top" data-lado="superior"></div>
+                        <div class="left" data-lado="izquierdo"></div>
+                        <div class="center" data-lado="central"></div>
+                        <div class="right" data-lado="derecho"></div>
+                        <div class="bottom" data-lado="inferior"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="guardar" class="btn btn-primary mt-4">Guardar Odontograma</button>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Interactividad para asignar problemas a cada parte del diente
+        document.querySelectorAll('.tooth div').forEach(part => {
+            part.addEventListener('click', function() {
+                // Depuración: Mostrar que la parte ha sido clickeada
+                console.log('Se ha clickeado una parte del diente:', this.dataset.lado);
+
+                // Prompt para seleccionar un problema
+                const problema = prompt("Selecciona el problema: (caries, empaste, extraido)");
+
+                // Limpiar clases existentes
+                this.classList.remove('caries', 'empaste', 'extraido');
+
+                // Asignar la clase correcta según el problema seleccionado
+                if (problema === 'caries') {
+                    this.classList.add('caries');
+                } else if (problema === 'empaste') {
+                    this.classList.add('empaste');
+                } else if (problema === 'extraido') {
+                    this.classList.add('extraido');
+                } else {
+                    console.log('No se seleccionó un problema válido');
+                }
+
+                // Depuración: Mostrar las clases actuales de la parte
+                console.log('Clases actuales:', this.classList);
+            });
+        });
+
+        // Guardar el odontograma al hacer clic en el botón
+        document.getElementById('guardar').addEventListener('click', function() {
+            const dientes = [];
+            document.querySelectorAll('.tooth').forEach(tooth => {
+                const toothData = {
+                    diente: tooth.dataset.tooth,
+                    lados: {}
+                };
+
+                tooth.querySelectorAll('div').forEach(part => {
+                    const lado = part.dataset.lado;
+                    toothData.lados[lado] = part.className;  // Guardar el estado de cada lado
+                });
+
+                dientes.push(toothData);
+            });
+
+            console.log('Odontograma a guardar:', dientes);
+
+            // Aquí puedes enviar los datos al servidor usando fetch o AJAX
+        });
+    </script>
+</body>
+</html>
